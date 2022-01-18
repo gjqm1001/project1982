@@ -44,13 +44,15 @@ public class UserLoginController {
     }
 
     @RequestMapping({"userInsert.do"})
-    public String userinsert(UserVO vo) {
+    public String userinsert(UserVO vo, Model m) {
         this.userService.userInsert(vo);
-        return "redirect:user_login.do";
+    	m.addAttribute("msg", "가입이 완료되었습니다.");
+        m.addAttribute("url", "user_login.do");
+        return "user/userInsertOK";
     }
     
     @RequestMapping(value = {"findId.do"})
-    public String findId(UserVO vo, UserVO vo1, Model m, HttpServletRequest request){
+    public String findId(UserVO vo, UserVO vo1, Model m){
     	this.userService.findId(vo);
     	List<UserVO> list = this.userService.findId(vo1);
     	m.addAttribute("msg", "가입하신 아이디가 존재하지 않습니다");

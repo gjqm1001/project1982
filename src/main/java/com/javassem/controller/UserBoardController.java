@@ -43,7 +43,7 @@ public class UserBoardController {
 	  
   }
   
-  @PostMapping({"/user/saveBoard.do"})
+  @RequestMapping({"/user/saveBoard.do"})
   public String insertBoard(BoardVO vo, Model m){
     this.boardService.insertBoard(vo);
     m.addAttribute("msg", "글 등록이 완료되었습니다");
@@ -52,7 +52,10 @@ public class UserBoardController {
   
   
   @RequestMapping(value = {"/user/userBoard.do"}, method = {RequestMethod.GET})
-  public String select(String searchCondition, String searchKeyword, Model m, PagingVO vo, @RequestParam(value = "nowPage", required = false) String nowPage, @RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+  public String select(String searchCondition, String searchKeyword, Model m, PagingVO vo,
+		  @RequestParam(value = "nowPage", required = false) String nowPage,
+		  @RequestParam(value = "cntPerPage", required = false) String cntPerPage)
+  {
     HashMap<Object, Object> map = new HashMap<>();
     int total = this.boardService.countBoard();
     if (nowPage == null && cntPerPage == null) {
@@ -83,7 +86,6 @@ public class UserBoardController {
 	BoardVO result = this.boardService.getBoard(vo);
 	HttpSession session = request.getSession();
     m.addAttribute("userId",session.getAttribute("userId"));
-    m.addAttribute("userPass",session.getAttribute("userPass"));
     m.addAttribute("board", result);
   }
   

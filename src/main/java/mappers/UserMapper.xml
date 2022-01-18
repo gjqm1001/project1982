@@ -38,14 +38,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
      <update id="updateUserView" parameterType="UserVO">
+     <choose>
+     	<when test="userimg1 != null">
 		<![CDATA[
-		UPDATE userInfo SET
-		 userimg1 = #{userimg1},
-		 userself = #{userself},
-		 username = #{username},
-		 userpass = #{userpass}
-		WHERE userid = #{userid}
-		]]>
+			UPDATE userInfo SET
+			 userimg1 = #{userimg1},
+			 userself = #{userself},
+			 username = #{username},
+			 userpass = #{userpass}
+			WHERE userid = #{userid}
+			]]>
+		</when>
+		
+		<otherwise>
+		<![CDATA[
+			UPDATE userInfo SET
+			 userself = #{userself},
+			 username = #{username},
+			 userpass = #{userpass}
+			WHERE userid = #{userid}
+			]]>
+		</otherwise>
+	</choose>
 	</update>
 	
 	<update id="updateInfoView" parameterType="UserVO">

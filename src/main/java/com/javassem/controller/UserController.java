@@ -43,8 +43,6 @@ public class UserController {
     @PostMapping(value = {"/user/shopInfoView.do"}, produces="application/json")
     @ResponseBody
     public ShopInfoVO getshop(@RequestBody ShopInfoVO vo){
-    	System.out.println("구직자 마이페이지 ajax 실행");
-    	System.out.println(vo.getShopName());
     	ShopInfoVO shop = this.userService.getShopView(vo);
       return shop;
     }
@@ -62,8 +60,10 @@ public class UserController {
     }
     
     @RequestMapping({"/user/updateMypage.do"})
-    public String updateBoard(UserVO vo) {
+    public String updateBoard(UserVO vo, Model m) {
       this.userService.updateUserInfoView(vo);
-      return "redirect:userMain.do";
+  	  m.addAttribute("msg", "프로필 수정이 완료되었습니다");
+      m.addAttribute("url", "userMypage.do?userid=" + vo.getUserid());
+      return "user/userInfoSaveOK";
     }
 }

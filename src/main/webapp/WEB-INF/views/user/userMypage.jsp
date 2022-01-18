@@ -157,10 +157,10 @@ $(document).ready(function(){
 									</form>
 								</div>
 		                	
-        <!-------------------------- 테이블 ------------------------->     
-                        <div class="divTable minimalistBlack"><!-- 출근현황 시작 -->
-                            <div class="divTableHeading"><!-- 제목 전체 -->
-                                <div class="divTableRow"><!-- 제목 내부 -->
+        <!--------------------------지원현황 테이블 ------------------------->     
+                        <div class="divTable minimalistBlack">
+                            <div class="divTableHeading">
+                                <div class="divTableRow">
                                     <div class="divTableHead">일자</div>
                                     <div class="divTableHead">시작시간</div>
                                     <div class="divTableHead">종료시간</div>
@@ -168,8 +168,8 @@ $(document).ready(function(){
                                     <div class="divTableHead">급여</div>
                                     <div class="divTableHead">매칭 여부</div>
                                     <div class="divTableHead">업체와 대화</div>
-                                </div><!-- 제목내부 -->
-                            </div><!-- 제목 전체 -->
+                                </div>
+                            </div>
                             
                             <div class="divTableBody">
                             <c:forEach items="${support}" var="sup">
@@ -183,19 +183,16 @@ $(document).ready(function(){
                                     <div class="divTableCell">${sup.shoppay }</div>
                                     <div class="divTableCell"> ${sup.maching }</div>
                                     <div class="divTableCell"><button onclick="window.open('http://9150-125-133-93-157.ngrok.io', '채팅', 'width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes');">대화하기</button></div> 
-                                </div> <!-- 첫행 -->	
+                                </div>
                                </c:forEach>
                                 
                             </div>  
                    		 </div> 
-                                <!------------------------ 테이블 종료---------------> 
+         <!------------------------ 테이블 종료 --------------------------> 
                             </div>
-                           
+                         <!-- 업체 미리보기 -->
                          <div class= "body_container_center_shop_contanier_info1">
-                             <div class="body_container_center_shop_contanier_info_ta1" style="width:95%;">
-                                     
-                             </div>
-                             <!-- 업체 미리보기 -->
+                             <div class="body_container_center_shop_contanier_info_ta1" style="width:95%;"></div>
                              <div style="margin-left:5%;margin-right:5%;">
                                  <ul style="font-size:18px;font-weight:bolder;font-family: 'Gowun Dodum', sans-serif;">
                                      <br/>
@@ -213,8 +210,8 @@ $(document).ready(function(){
                                  </ul>
                              </div>
                          </div>
+                         <!-- 업체 미리보기 종료 -->
                      </div>
-
              </div> <!-- 중간 메뉴바 종료-->
          </div><!-- 페이지 컨테이너 종료-->
      </main>   

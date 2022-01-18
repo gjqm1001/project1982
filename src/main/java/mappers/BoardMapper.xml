@@ -79,7 +79,7 @@
       </if>   
    </select>
       
-      <select id="countboard" resultType="int">
+   <select id="countboard" resultType="int">
       SELECT COUNT(*) FROM uploadtemp
    </select>
 	

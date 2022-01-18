@@ -10,8 +10,9 @@
 <body>
 <script type="text/javascript">
 var message = '${msg}';
+var returnUrl = '${url}';
 alert(message);
-window.close();
+document.location.href = returnUrl;
 </script>
 </body>
 </html>
